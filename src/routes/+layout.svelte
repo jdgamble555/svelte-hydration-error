@@ -3,12 +3,11 @@
   import "../app.css";
   let { children } = $props();
 
-  const markup = `<div ${browser ? "light" : "dark"}></div>`;
 </script>
 
 {@render children()}
 
 <svelte:head>
-  <!-- svelte-ignore hydration_html_changed hydration_mismatch -->
-  {@html markup}
+  <!-- svelte-ignore hydration_html_changed -->
+  {@html `<script> ${browser ? "\nconst light = true\;" : "\nconst dark = true\;"}</script>`}
 </svelte:head>
